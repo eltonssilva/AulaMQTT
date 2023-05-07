@@ -6,5 +6,5 @@ void func_Teste(){
  boolean statusRele = digitalRead(Rele1);
  digitalWrite(Rele1, !statusRele);
  digitalWrite(Rele2, statusRele);
- MQTT.publish(TOPICO_PUB, "Piscou", true);
+ MQTT.publish(TOPICO_PUB_1, "Piscou", true);
 }

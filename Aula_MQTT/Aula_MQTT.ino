@@ -9,28 +9,41 @@
 //****************************************
 
 
-#define TOPICO_SUB  "/house/iluminacao/01"
-#define TOPICO_PUB  "/house/confirma/01"
-
-// REDE WIFI
-
-const char* SSID = "autohome";        // Nome da Minha rede Wifi
-const char* PASSWORD  = "comida05";   // Senha da Minha rede Wifi
+#define TOPICO_SUB_1  "/uema/carga/0101"
+#define TOPICO_SUB_2  "/uema/carga/0102"
+#define TOPICO_SUB_3  "/uema/carga/0103"
+#define TOPICO_SUB_4  "/uema/carga/0104"
 
 
+#define TOPICO_PUB_1  "/uema/res/0101"
+#define TOPICO_PUB_2  "/uema/res/0102"
+#define TOPICO_PUB_3  "/uema/res/0103"
+#define TOPICO_PUB_4  "/uema/res/0104"
 
-//MQTT
-const char* BROKER_MQTT = "10.0.0.198";  // Endereço do Servidor Broker;
+
+// MUDAR SENHA WIFI (SSID) PASSWORD
+
+const char* SSID = "UEMA-COROATA";        // Nome da Minha rede Wifi
+const char* PASSWORD  = "Uemacrt20";   // Senha da Minha rede Wifi
+
+
+
+//IP E PORTA DO SERVIDOR MQTT
+const char* BROKER_MQTT = "34.229.145.165";  // Endereço do Servidor Broker;
 int BROKER_PORT = 1883;                         // Porta do Servidor
 
-// USER/PASSWORD MQTT
+// USUARIO E SENHA DO SERVIDOR MQTT
 
 const char* User_MQTT = "autohome";             // Usuario MQTT
 const char* Pass_MQTT = "comida05";             // Senha MQTT
 
 
-int Rele1 = 5;
-int Rele2 = 12;
+// PINOS DO RELE
+int Rele1 = 16;
+int Rele2 = 14;
+int Rele3 = 12;
+int Rele4 = 13;
+
 int Contagem = 0;
 
 WiFiClient espClient; // Cria o objeto espClient
@@ -40,10 +53,10 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length);
 
 void setup() {
   // put your setup code here, to run once:
-  InitPinos();
-  InitSerial();
-  initWiFi();
-  initMQTT();
+  InitPinos();    //Inicializar os Pinos
+  InitSerial();   // Inicializar a comunicação serial
+  initWiFi();     //Inicializar a comunicação wifi
+  initMQTT();     //Inicializar a comunicação mqtt
 
 }
 
@@ -51,7 +64,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 //func_Teste();
-verificaConexaoWIFIMQTT();
+verificaConexaoWIFIMQTT();    //Verifica Conexão WIFI MQTT
 MQTT.loop();
 //delay(1000);
 }

@@ -36,7 +36,7 @@ void reconectWiFi(){
    WiFi.begin(SSID, PASSWORD);  // Conectar a rede Wifi
 
    while (WiFi.status() != WL_CONNECTED){
-    delay(100);
+    delay(200);
     Serial.print(".");
    }
 
@@ -59,7 +59,10 @@ void reconnectMQTT(){
     if (MQTT.connect("Elton123123", User_MQTT, Pass_MQTT)) 
         {
             Serial.println("Conectado com sucesso ao broker MQTT!");
-            MQTT.subscribe(TOPICO_SUB); 
+            MQTT.subscribe(TOPICO_SUB_1); 
+            MQTT.subscribe(TOPICO_SUB_2); 
+            MQTT.subscribe(TOPICO_SUB_3); 
+            MQTT.subscribe(TOPICO_SUB_4); 
         } 
    else
         {
